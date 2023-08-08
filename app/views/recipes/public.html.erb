@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row-md">
+    <div class="field-public">
+    <h3>Public Recipes</h3>
+    </div>
+<div class="grid-public">
+<% if (@recipes.length > 0) %>
+<% @recipes.each do |recipe| %>
+    <div class="recipe-item recipe-name">
+    <h3><%= recipe.name %></h3>
+    <p> By <%= current_user.name %></p>
+    </div>
+    <div class="recipe-item recipe-description">
+    <h3>Total Food of items: 45</h3>
+    <h3>Total Price of items : $ 5353</h3>
+    </div>
+<% end %>
+<% else %>
+<div>No registered recipe so far</div>
+<% end %>
+</div>
+</div>
+</div>

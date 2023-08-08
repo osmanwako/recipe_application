@@ -1,0 +1,47 @@
+.row {
+  max-width: 1448px;
+  padding: 30px;
+  background-color: #f2f2f2;
+}
+
+.row-md {
+  max-width: 976px;
+  padding: 30px;
+  background-color: #f2f2f2;
+}
+
+.grid-recipe {
+  display: grid;
+  row-gap: 20px;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.grid-public {
+  display: grid;
+  row-gap: 20px;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.recipe-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+}
+
+.recipe-name {
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-items: flex-end;
+}
+
+.recipe-description {
+  border-left: none;
+}
+
+.field-public {
+  text-align: center;
+}
