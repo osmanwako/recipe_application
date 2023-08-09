@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row">
+<% if (@recipe) %>
+<h3 class="public-head"><%= @recipe.name %></h3>
+<div class="recipe-details">
+<span> 
+<h4>Prepation Time :<%= @recipe.preparation_time %></h4>
+<h4 class="public-toggle">
+<% if @recipe.public %>
+Public
+<% else %>
+Private
+<% end %>
+<%= form_tag "/public/recipes/#{@recipe.id}", method: :PATCH, class: "form-toggle" do %>
+    <%= submit_tag("", class: "btn-toggle") %>
+<% end %>
+</h4>
+</span>
+<h4> Cooking Time :<%= @recipe.cooking_time %></h4>
+<h4> Created Date :<%= @recipe.created_at %></h4>
+<h4> Created By :<%= @recipe.user.name %></h4>
+</div>
+<% else %>
+<h4 class="public-head">Unkown Recipe</h4>
+<% end %>
+</div>
+</div>

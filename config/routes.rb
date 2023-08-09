@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   resources :foods, only: [:index] do
     resources :recipefoods, only: [:index]
   end
-  resources :recipes, only: [:index, :destroy] do
+  resources :recipes, only: [:index, :show, :destroy, :update] do
     resources :recipefoods, only: [:index]
   end
   resources :recipefoods, only: [:index]
-  get "recipes/public", to: "recipes#public"
+  get "public/recipes", to: "recipes#public"
+  patch "public/recipes/:id", to: "recipes#update"
 end
