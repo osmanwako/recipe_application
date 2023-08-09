@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag("devise") %>
+<div class="container">
+<div class="devise-row">
 <h2>Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -17,9 +20,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="field-action">
+    <%= f.submit "Change my password", class: "btn-action" %>
   </div>
 <% end %>
-
+<div class="field field-link">
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

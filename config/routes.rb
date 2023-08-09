@@ -2,14 +2,13 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  devise_for :users, path_names: { sign_in: "login", sign_out: "logout", password: "password", confirmation: "verification", registration: "register" }
   root "foods#index"
-  devise_for :users
 
   resources :foods, only: [:index] do
-    resources :recipes, only: [:index]
+    resources :recipefoods, only: [:index]
   end
   resources :recipes, only: [:index] do
-    resources :foods, only: [:index]
+    resources :recipefoods, only: [:index]
   end
 end

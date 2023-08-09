@@ -13,3 +13,73 @@
  *= require_tree .
  *= require_self
  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-tab {
+  margin-left: 10px;
+  border: solid 1px #20538d;
+  border-radius: 4px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  background: #4479ba;
+  color: #fff;
+  padding: 8px 12px;
+}
+
+.btn-action {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+div .btn-action {
+  float: right;
+}
+
+.field .notice {
+  font-style: italic;
+  color: rgb(26, 232, 26);
+}
+.field .alert {
+  font-style: italic;
+  color: red;
+}
+
+.btn-delete {
+  background-color: #f00e0e;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.field-link {
+  display: flex;
+}
+
+.field-link a {
+  margin-left: 10px;
+  border-radius: 4px;
+  border: solid 1px #20538d;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  background: #4479ba;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+}
