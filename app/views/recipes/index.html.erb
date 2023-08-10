@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row">
+    <div class="field">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    </div>
+<div class="grid-recipe">
+<% if (@recipes.length > 0) %>
+<% @recipes.each do |recipe| %>
+<div class="recipe-item recipe-name">
+<h3><%= recipe.name %></h3>
+<%= form_tag recipe_path(recipe), method: :delete do %>
+    <%= submit_tag("Remove", class: "btn-delete") %>
+     <% end %>
+</div>
+<div class="recipe-item recipe-description">
+<%= recipe.description %>
+</div>
+<% end %>
+<% else %>
+<div>No registered recipe so far</div>
+<% end %>
+</div>
+</div>
+</div>
