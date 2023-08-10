@@ -104,3 +104,24 @@
 .public-toggle form {
   margin-left: 10px;
 }
+
+.row-table {
+  background-color: #fff;
+  padding: 10px;
+  margin: 30px 10px;
+}
+
+.table-recipe {
+  width: auto;
+  min-width: 768px;
+  border-collapse: collapse;
+  border: 2px solid #333;
+}
+
+.table-recipe tr * {
+  border-right: 2px solid #333;
+  padding: 10px;
+}
+.table-recipe tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}

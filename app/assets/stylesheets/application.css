@@ -166,6 +166,7 @@ div .btn-action {
 
 .field-link {
   display: flex;
+  margin-bottom: 0;
 }
 
 .field-link a {

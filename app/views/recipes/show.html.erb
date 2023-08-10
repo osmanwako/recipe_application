@@ -21,6 +21,29 @@ Private
 <h4> Cooking Time :<%= @recipe.cooking_time %></h4>
 <h4> Created Date :<%= @recipe.created_at %></h4>
 <h4> Created By :<%= @recipe.user.name %></h4>
+<div class="field-link"><%= link_to "Generate Shopping List" %><%= link_to "Add Ingredient" %></div>
+</div>
+<div class="row-table">
+<% if (@foods.length > 0) %>
+<table class="table-recipe">
+<tr>
+<th>Food</th>
+<th>Quantity</th>
+<th>Value</th>
+<th>Action</th>
+</tr>
+<% @foods.each do |food| %>
+    <tr>
+    <td><%= food.name %></td>
+    <td><%= food.quantity %></td>
+    <td><%= food.price %></td>
+    <td>Modify Remove</td>
+    </tr>
+    <% end %>
+</table>
+<% else %>
+<h4> No Food list </h4>
+<% end %>
 </div>
 <% else %>
 <h4 class="public-head">Unkown Recipe</h4>

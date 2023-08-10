@@ -28,5 +28,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:id])
+    @foods = []
+    if (@recipe)
+      food_id = @recipe.recipefoods.pluck(:food_id)
+      if (food_id.length > 0)
+        @foods = Food.where(id: food_id)
+      end
+    end
   end
 end
