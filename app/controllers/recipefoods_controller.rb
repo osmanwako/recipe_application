@@ -3,9 +3,7 @@ class RecipefoodsController < ApplicationController
 
   def index
     @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:recipe_id])
-    if @recipe.nil?
-      redirect_to recipes_path
-    end
+    redirect_to recipes_path if @recipe.nil?
     @recipefoods = Food.includes(:user, :recipefoods).where(recipefoods: { recipe_id: params[:recipe_id] },
                                                             user: current_user).pluck(:id)
     @foods = Food.includes(:user, :recipefoods).where.not(id: @recipefoods)
@@ -24,32 +22,28 @@ class RecipefoodsController < ApplicationController
 
   def new
     @recipe = Recipe.find_by(id: params[:recipe_id])
-    if (@recipe.nil?)
-      redirect_to recipes_path
-    end
+    redirect_to recipes_path if @recipe.nil?
     @recipefood = Recipefood.new
   end
 
   def create
     @recipe = Recipe.find_by(id: params[:recipe_id])
-    if @recipe.nil?
-      redirect_to recipes_path
-    end
+    redirect_to recipes_path if @recipe.nil?
     data = food_params
     @food = Food.create(data)
     @food.save
     @foodrecipe = Recipefood.create(quantity: data[:quantity], food_id: @food.id, recipe_id: params[:recipe_id])
     @foodrecipe.save
     if @foodrecipe.id == nil?
-      redirect_to "/recipes/#{params[:recipe_id]}/recipefoods/new", alert: "Failed to add."
+      redirect_to "/recipes/#{params[:recipe_id]}/recipefoods/new", alert: 'Failed to add.'
     else
-      redirect_to "/recipes/#{params[:recipe_id]}/recipefoods/new", notice: "Successfully added."
+      redirect_to "/recipes/#{params[:recipe_id]}/recipefoods/new", notice: 'Successfully added.'
     end
   end
 
   def destroy
     @recipefoods = Recipefood.where(recipe_id: params[:recipe_id], food_id: params[:id])
-    if (@recipefoods.nil?)
+    if @recipefoods.nil?
       redirect_to recipes_path
     else
       @recipefoods.destroy_all

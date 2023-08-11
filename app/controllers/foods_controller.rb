@@ -6,15 +6,15 @@ class FoodsController < ApplicationController
   end
 
   def new
-    @food = Food.new(name: "", measurement_unit: "", price: "", quantity: 1)
+    @food = Food.new(name: '', measurement_unit: '', price: '', quantity: 1)
   end
 
   def create
     @food = Food.create(food_params)
     if @food.save
-      redirect_to foods_path, notice: "Item was successfully created."
+      redirect_to foods_path, notice: 'Item was successfully created.'
     else
-      redirect_to foods_path, alert: "Failed to create."
+      redirect_to foods_path, alert: 'Failed to create.'
     end
   end
 
@@ -26,12 +26,10 @@ class FoodsController < ApplicationController
 
   def destroy
     @food = Food.includes(:user, :recipefoods).find_by(id: params[:id])
-    if @food.nil?
-      redirect_to foods_path, alert: "Failed to delete."
-    end
+    redirect_to foods_path, alert: 'Failed to delete.' if @food.nil?
 
     @food.destroy
-    redirect_to foods_path, notice: "Item was successfully deleted."
+    redirect_to foods_path, notice: 'Item was successfully deleted.'
   end
 
   private
