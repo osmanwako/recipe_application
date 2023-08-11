@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :recipefoods, only: [:index]
   get 'public/recipes', to: 'recipes#public'
   patch 'public/recipes/:id', to: 'recipes#update'
+  get 'general_shopping_list', to: 'shopping_lists#index'
+  resources :shopping_lists
 end

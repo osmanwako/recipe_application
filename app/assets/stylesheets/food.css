@@ -31,6 +31,7 @@ td {
 }
 
 .delete_btn {
+  width: 40%;
   background-color: #fff;
   color: #f44336;
   padding: 8px;
@@ -38,7 +39,8 @@ td {
   border: 1px solid #f44336;
   border-radius: 5px;
   letter-spacing: 1px;
-  font-family: 'Poppins', sans-serif; 
+  font-family: 'Poppins', sans-serif;
+  margin: auto;
 }
 
 .delete_btn:hover {
@@ -56,7 +58,7 @@ td {
   letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
-  margin-top: 20px;
+  margin: 20px 0 0 auto;
 }
 
 .food_form {
@@ -83,20 +85,6 @@ input {
   border: none;
   outline: blue;
   background-color: #fff;
-}
-
-input:checked {
-  background-color: #2196f3;
-}
-
-input:focus {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked::before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
 }
 
 .create_food_btn {

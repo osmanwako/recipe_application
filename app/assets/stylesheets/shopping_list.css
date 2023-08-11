@@ -1,0 +1,45 @@
+.new-food-header {
+	text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  color: #4CAF50;
+  margin-top: 20px;
+}
+
+.foods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 93%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-family: 'Poppins', sans-serif; 
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-family: 'Poppins', sans-serif; 
+  font-weight: 500;
+}
