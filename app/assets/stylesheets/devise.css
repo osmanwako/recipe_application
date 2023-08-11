@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .devise-row h2 {
   padding: 10px;
   margin: 0 20px;

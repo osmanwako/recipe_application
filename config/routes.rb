@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :foods, only: [:index] do
     resources :recipefoods, only: [:index]
   end
-  resources :recipes, only: [:index, :show, :destroy, :update] do
-    resources :recipefoods, only: [:index]
+  resources :recipes, only: [:index, :new, :show, :destroy, :update] do
+    resources :recipefoods, only: [:index, :new, :create, :destroy]
   end
   resources :recipefoods, only: [:index]
   get "public/recipes", to: "recipes#public"
+  get "generate/recipe/:id", to: "recipes#generate"
+  post "generate/recipe/:id/add", to: "recipes#add"
   patch "public/recipes/:id", to: "recipes#update"
 end
