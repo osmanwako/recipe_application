@@ -22,6 +22,7 @@ Private
 <h4> Created Date :<%= @recipe.created_at %></h4>
 <h4> Created By :<%= @recipe.user.name %></h4>
 <div class="field-link"><%= link_to "Generate Shopping List", "/generate/recipe/#{@recipe.id}" %><%= link_to "Add Ingredient", "/recipes/#{@recipe.id}/recipefoods/new" %></div>
+<div class="field-link"><%= link_to "Generate Shopping List", general_shopping_list_path %><%= link_to "Add Ingredient" %></div>
 </div>
 <div class="row-table">
 <% if (@foods.length > 0) %>

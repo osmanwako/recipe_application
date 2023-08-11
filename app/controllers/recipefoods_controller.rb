@@ -2,6 +2,7 @@ class RecipefoodsController < ApplicationController
   before_action :authenticate_user!
 
   def index; end
+<<<<<<< HEAD
 
   def new
     @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:recipe_id])
@@ -36,4 +37,6 @@ class RecipefoodsController < ApplicationController
   def food_params
     params.require(:recipefood).permit(:name, :measurement_unit, :price, :quantity)
   end
+=======
+>>>>>>> 0c91ab647d434201bd81d5d639966a97f102ac8f
 end
