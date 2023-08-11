@@ -1,4 +1,4 @@
-<header>
+<header class="row" id="header-row">
 <div class="logo">
 <%= image_tag("title.png", class: "logo_icon", alt: "Recipe Logo") %>
 <%= link_to "Recipe Application", "", class: "nav_link" %>
@@ -7,10 +7,9 @@
   <ul>
     <li><%= link_to "Foods List", foods_path %></li>
     <li><%= link_to "Recipes List", recipes_path %></li>
-    <li><%= link_to "Public Recipes", "/recipes/public" %></li>
+    <li><%= link_to "Public Recipes", "/public/recipes" %></li>
     <li><%= link_to "Shopping List", recipefoods_path %></li>
-    <li>
-    <%= form_tag "/users/logout", method: :delete do %>
+    <li><%= form_tag "/users/logout", method: :delete do %>
     <%= submit_tag("Logout", class: "btn-link") %>
      <% end %>
     </li>

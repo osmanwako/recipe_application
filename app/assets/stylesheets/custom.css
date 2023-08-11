@@ -1,12 +1,7 @@
 .row {
-  max-width: 1448px;
+  max-width: 1879px;
   padding: 30px;
-  background-color: #f2f2f2;
-}
-
-.row-md {
-  max-width: 976px;
-  padding: 30px;
+  width: 100%;
   background-color: #f2f2f2;
 }
 
@@ -17,17 +12,19 @@
   padding: 10px;
 }
 
-.grid-public {
-  display: grid;
-  row-gap: 20px;
-  grid-template-columns: auto auto;
-  padding: 10px;
+.public-recipe {
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .recipe-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 10px;
+  padding-bottom: 0;
 }
 
 .recipe-name {
@@ -42,6 +39,89 @@
   border-left: none;
 }
 
-.field-public {
+.public-head {
   text-align: center;
+}
+
+.recipe-link {
+  text-decoration: none;
+  padding: 10px;
+}
+
+.public-name > * {
+  padding: 10px 10px;
+}
+
+.public-name .recipe-link {
+  padding-left: 0;
+}
+
+.public-description > p {
+  padding: 10px 30px;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.recipe-details > * {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-toggle {
+  background-color: #00ff7f;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 25%;
+  border-bottom-right-radius: 25%;
+  padding: 0;
+  height: 25px;
+  width: 40px;
+}
+
+.btn-toggle {
+  height: 25px;
+  width: 25px;
+  border: 3px solid #00ff7f;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.public-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.public-toggle form {
+  margin-left: 10px;
+}
+
+.row-table {
+  background-color: #fff;
+  padding: 10px;
+  margin: 30px 10px;
+}
+
+.table-recipe {
+  width: auto;
+  min-width: 768px;
+  border-collapse: collapse;
+  border: 2px solid #333;
+}
+
+.table-recipe tr * {
+  border-right: 2px solid #333;
+  padding: 10px;
+}
+.table-recipe tr:nth-child(odd) {
+  background-color: #f2f2f2;
 }

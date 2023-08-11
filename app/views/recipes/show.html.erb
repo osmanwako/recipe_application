@@ -1,0 +1,52 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row">
+<% if (@recipe) %>
+<h3 class="public-head"><%= @recipe.name %></h3>
+<div class="recipe-details">
+<span> 
+<h4>Prepation Time :<%= @recipe.preparation_time %></h4>
+<h4 class="public-toggle">
+<% if @recipe.public %>
+Public
+<% else %>
+Private
+<% end %>
+<%= form_tag "/public/recipes/#{@recipe.id}", method: :PATCH, class: "form-toggle" do %>
+    <%= submit_tag("", class: "btn-toggle") %>
+<% end %>
+</h4>
+</span>
+<h4> Cooking Time :<%= @recipe.cooking_time %></h4>
+<h4> Created Date :<%= @recipe.created_at %></h4>
+<h4> Created By :<%= @recipe.user.name %></h4>
+<div class="field-link"><%= link_to "Generate Shopping List" %><%= link_to "Add Ingredient" %></div>
+</div>
+<div class="row-table">
+<% if (@foods.length > 0) %>
+<table class="table-recipe">
+<tr>
+<th>Food</th>
+<th>Quantity</th>
+<th>Value</th>
+<th>Action</th>
+</tr>
+<% @foods.each do |food| %>
+    <tr>
+    <td><%= food.name %></td>
+    <td><%= food.quantity %></td>
+    <td><%= food.price %></td>
+    <td>Modify Remove</td>
+    </tr>
+    <% end %>
+</table>
+<% else %>
+<h4> No Food list </h4>
+<% end %>
+</div>
+<% else %>
+<h4 class="public-head">Unkown Recipe</h4>
+<% end %>
+</div>
+</div>

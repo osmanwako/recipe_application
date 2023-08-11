@@ -1,9 +1,9 @@
-class CreateDishes < ActiveRecord::Migration[7.0]
+class CreateRecipefoods < ActiveRecord::Migration[7.0]
   def change
-    create_table :dishes do |t|
-      t.integer :quantity, default: 1
-      t.references :recipe
-      t.references :food
+    create_table :recipefoods do |t|
+      t.integer :quantity
+      t.references :food, null: false, foreign_key: true
+      t.references :recipe, null: false, foreign_key: true
 
       t.timestamps
     end

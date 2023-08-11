@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "food" %>
+<%= render "layouts/header" %>
+
+<div class='food_form'>
+<h1 class='header'>New food</h1>
+
+<%= render "form", food: @food %>
+
+<br>
+
+<div>
+  <%= link_to "Back to foods", foods_path %>
+</div>
+</div>
+```

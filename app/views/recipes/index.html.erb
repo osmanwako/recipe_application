@@ -10,7 +10,7 @@
 <% if (@recipes.length > 0) %>
 <% @recipes.each do |recipe| %>
 <div class="recipe-item recipe-name">
-<h3><%= recipe.name %></h3>
+<h3><%= link_to recipe.name, recipe_path(recipe), class: "recipe-link" %></h3>
 <%= form_tag recipe_path(recipe), method: :delete do %>
     <%= submit_tag("Remove", class: "btn-delete") %>
      <% end %>
