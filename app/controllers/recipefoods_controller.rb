@@ -1,42 +1,65 @@
 class RecipefoodsController < ApplicationController
   before_action :authenticate_user!
 
-  def index; end
-<<<<<<< HEAD
+  def index
+    @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:recipe_id])
+    if @recipe.nil?
+      redirect_to recipes_path
+    end
+    @recipefoods = Food.includes(:user, :recipefoods).where(recipefoods: { recipe_id: params[:recipe_id] },
+                                                            user: current_user).pluck(:id)
+    @foods = Food.includes(:user, :recipefoods).where.not(id: @recipefoods)
+  end
+
+  def generate
+    foods = params.require(:foods)
+    items = Food.where(id: foods)
+    @recipe = Recipe.find_by(id: params[:id])
+    items.each do |item|
+      @recipefood = Recipefood.create(quantity: item.quantity, food: item, recipe: @recipe)
+      @recipefood.save
+    end
+    redirect_to recipe_path(id: params[:id])
+  end
 
   def new
-    @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:recipe_id])
-    redirect_to recipes_path unless @recipe
+    @recipe = Recipe.find_by(id: params[:recipe_id])
+    if (@recipe.nil?)
+      redirect_to recipes_path
+    end
     @recipefood = Recipefood.new
   end
 
   def create
+    @recipe = Recipe.find_by(id: params[:recipe_id])
+    if @recipe.nil?
+      redirect_to recipes_path
+    end
     data = food_params
-    @food = Food.create(name: data[:name], measurement_unit: data[:measurement_unit], price: data[:price],
-                        quantity: data[:quantity], user: current_user)
+    @food = Food.create(data)
     @food.save
-    @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:recipe_id])
-    redirect_to recipes_path unless @recipe
-    @foodrecipe = Recipefood.create(quantity: data[:quantity], food: @food, recipe: @recipe)
+    @foodrecipe = Recipefood.create(quantity: data[:quantity], food_id: @food.id, recipe_id: params[:recipe_id])
     @foodrecipe.save
-    redirect_to "/recipes/#{@recipe.id}/recipefoods/new", alert: 'Failed to add.' unless @food && @foodrecipe
-    p @food, @recipe
-    redirect_to "/recipes/#{@recipe.id}/recipefoods/new", notice: 'Successfully added.'
+    if @foodrecipe.id == nil?
+      redirect_to "/recipes/#{params[:recipe_id]}/recipefoods/new", alert: "Failed to add."
+    else
+      redirect_to "/recipes/#{params[:recipe_id]}/recipefoods/new", notice: "Successfully added."
+    end
   end
 
   def destroy
-    @foodrecipe = Recipefood.includes(:food, :recipe).where(recipe_id: params[:recipe_id], food_id: params[:id]).first
-    @recipe = @foodrecipe.recipe
-    redirect_to recipes_path unless @foodrecipe
-    @foodrecipe.destroy
-    redirect_to recipe_path(@recipe)
+    @recipefoods = Recipefood.where(recipe_id: params[:recipe_id], food_id: params[:id])
+    if (@recipefoods.nil?)
+      redirect_to recipes_path
+    else
+      @recipefoods.destroy_all
+      redirect_to recipe_path(id: params[:recipe_id])
+    end
   end
 
   private
 
   def food_params
-    params.require(:recipefood).permit(:name, :measurement_unit, :price, :quantity)
+    params.require(:recipefood).permit(:name, :measurement_unit, :price, :quantity).merge(user_id: current_user.id)
   end
-=======
->>>>>>> 0c91ab647d434201bd81d5d639966a97f102ac8f
 end

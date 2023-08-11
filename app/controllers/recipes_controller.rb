@@ -10,17 +10,19 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:id])
-    @recipe.update(public: !@recipe.public) if @recipe
-    @recipe.update(public: !@recipe.public) if @recipe
+    @recipe = Recipe.find_by(id: params[:id])
+    if @recipe.nil?
+      redirect_to recipes_path
+    end
+    @recipe.update(public: !@recipe.public)
     redirect_to "/public/recipes/#{@recipe.id}"
   end
 
   def destroy
     @recipe = Recipe.includes(:user, :recipefoods).find_by(id: params[:id])
-    redirect_to recipes_path, alert: 'Failed to delete.' unless @recipe
+    redirect_to recipes_path, alert: "Failed to delete." unless @recipe
     @recipe.destroy
-    redirect_to recipes_path, notice: 'Item was successfully deleted.'
+    redirect_to recipes_path, notice: "Item was successfully deleted."
   end
 
   def show

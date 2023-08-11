@@ -1,45 +1,42 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: %i[show edit destroy]
   before_action :authenticate_user!
 
-  # GET /foods
   def index
-    @foods = current_user.foods
+    @foods = Food.where(user_id: current_user.id)
   end
 
-  # GET /foods/new
   def new
-    @food = Food.new
+    @food = Food.new(name: "", measurement_unit: "", price: "", quantity: 1)
   end
 
-  # POST /foods
   def create
-    @food = current_user.foods.new(food_params)
-    @food.name = @food.name.titleize
-
+    @food = Food.create(food_params)
     if @food.save
-      redirect_to foods_url, notice: 'Food was successfully created.'
+      redirect_to foods_path, notice: "Item was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to foods_path, alert: "Failed to create."
     end
   end
 
-  # DELETE /foods/1
-  def destroy
-    @food.destroy
+  def shop
+    @foods = Food.includes(:recipefoods).where(user: current_user)
+    @food_amount = @foods.count.zero? ? 0 : @foods.count
+    @total_value = @foods.sum(:price).zero? ? 0 : @foods.sum(:price)
+  end
 
-    redirect_to foods_url, notice: 'Food was successfully destroyed.'
+  def destroy
+    @food = Food.includes(:user, :recipefoods).find_by(id: params[:id])
+    if @food.nil?
+      redirect_to foods_path, alert: "Failed to delete."
+    end
+
+    @food.destroy
+    redirect_to foods_path, notice: "Item was successfully deleted."
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_food
-    @food = Food.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity).merge(user_id: current_user.id)
   end
 end

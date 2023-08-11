@@ -109,6 +109,7 @@ nav ul li form {
   padding: 12px 20px;
   border-radius: 5px;
   border: none;
+  display: inline-block;
 }
 
 div .btn-action {
@@ -158,7 +159,6 @@ div .btn-action {
 
 .field-link {
   display: flex;
-  margin-bottom: 0;
 }
 
 .field-link a {
