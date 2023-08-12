@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row add-ingredient">
+<h3 class="recipefood-title">Add New Recipe</h3>
+<%= form_with model: [@recipe] do |form| %>
+    <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :preparation_time %>
+      <%= form.text_field :preparation_time %>
+    </div>
+    <div class="field">
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time %>
+    </div>
+    <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4 %>
+    </div>
+    <div class="field">
+    <%= form.label :public %>
+    <%= form.select(:public, options_for_select([["Private", false], ["Public", true]])) %>
+    </div>
+    <div class= "field-action">
+    <%= form.submit "Add", class: "btn-action" %>
+    </div>
+    <div class="field">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+</div>  
+</div>

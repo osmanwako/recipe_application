@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row add-ingredient">
+<h3 class="recipefood-title">Generate shopping List </h3>
+    <%= form_tag("/generate/recipe/#{@recipe.id}/add", method: :post) do %>
+        <% @foods.each do |food| %>
+    <div class="check-list">
+    <label><%= food.name %></label>
+    <%= check_box_tag "foods[]", food.id, false, id: "f#{food.id}" %>
+    </div>
+    <% end %>
+    <div class= "field-action">
+    <%= submit_tag "Generate", class: "btn-action btn-generate" %>
+    </div>
+    <div class="field">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
+</div>  
+</div>
+</div>

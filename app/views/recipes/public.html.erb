@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row">
+    <h2 class="public-head">
+       Public Recipes
+    </h2>
+<% if (@recipes.length > 0) %>
+<% @recipes.each do |recipe| %>
+    <div class="public-recipe">
+    <div class="public-name">
+    <h3> <%= link_to recipe.name, recipe_path(recipe), class: "recipe-link" %></h3>
+    <p> By: <b><%= current_user.name %></b></p>
+    </div>
+    <div class="public-description">
+    <p>Total Food of items: 45</p>
+    <p>Total Price of items : $ 5353</p>
+    </div>
+    </div>
+<% end %>
+<% else %>
+<div>No registered recipe so far</div>
+<% end %>
+</div>
+</div>

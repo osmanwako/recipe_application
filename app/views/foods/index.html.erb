@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag("custom") %>
+<div class="container">
+<%= render "layouts/header" %>
+<div class="row">
+<div class="newrecipe field-link">
+<%= link_to "Add Food", new_food_path %>
+</div>
+<div class="field">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    </div>
+<div class="row-table">
+<% if (@foods.length > 0) %>
+<table class="table-food">
+<tr>
+<th class="table-col">Food</th>
+<th class="table-col">Measurement Unit</th>
+<th class="table-col">Quantity</th>
+<th class="table-col">Unit Price</th>
+<th class="table-col">Action</th>
+</tr>
+<% @foods.each do |food| %>
+    <tr>
+    <td class="table-col"><%= food.name %></td>
+    <td class="table-col"><%= food.measurement_unit %></td>
+    <td class="table-col"><%= food.quantity %></td>
+    <td class="table-col"><%= food.price %></td>
+    <td class="table-col td-action">
+    <%= link_to "Delete", "/foods/#{food.id}", data: { "turbo-method": :delete } %>
+    </td>
+    </tr>
+    <% end %>
+</table>
+<% else %>
+<h4> No Food List </h4>
+<% end %>
+</div>
+</div>
+</div>
