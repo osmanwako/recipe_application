@@ -18,12 +18,14 @@ form {
   padding: 10px;
 }
 
-.field input {
+.field input,
+.field select,
+.field textarea {
   width: 100%;
   color: #666;
-  padding: 0.75em;
+  padding: 8px;
   box-shadow: none;
   box-sizing: border-box;
   transition: all 0.2s linear;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
