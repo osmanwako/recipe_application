@@ -2,7 +2,7 @@
 <div class="container">
 <%= render "layouts/header" %>
 <div class="row add-ingredient">
-<h3 class="recipefood-title">Generate shopping List </h3>
+<h3 class="recipefood-title">Add New Ingredient</h3>
     <%= form_tag("/generate/recipe/#{@recipe.id}/add", method: :post) do %>
         <% @foods.each do |food| %>
     <div class="check-list">

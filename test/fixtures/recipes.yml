@@ -4,8 +4,26 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+recipe_one:
+  name: Apple Pie
+  preparation_time: 1hr
+  cooking_time: 55hr
+  description: MyText description here
+  public: true
+  user: user_one
+
+recipe_two:
+  name: Your Recipe one
+  preparation_time: 23min
+  cooking_time: 18min
+  description: sample description here
+  public: true
+  user: user_two
+
+recipe_three:
+  name: An other recipe
+  preparation_time: 30min
+  cooking_time: 25min
+  description: Other description here
+  public: true
+  user: user_one

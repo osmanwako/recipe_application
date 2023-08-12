@@ -2,24 +2,27 @@
 <div class="container">
 <%= render "layouts/header" %>
 <div class="row add-ingredient">
-<h3 class="recipefood-title">Add New Food</h3>
-
-<%= form_with model: [@food] do |form| %>
+<h3 class="recipefood-title">Add New Recipe</h3>
+<%= form_with model: [@recipe] do |form| %>
     <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
     </div>
     <div class="field">
-    <%= form.label :measurement_unit %>
-    <%= form.text_field :measurement_unit %>
+      <%= form.label :preparation_time %>
+      <%= form.text_field :preparation_time %>
     </div>
     <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price, min: 0.01, step: 0.01, max: 100000 %>
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time %>
     </div>
     <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, min: 1, step: 0.1, max: 100 %>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4 %>
+    </div>
+    <div class="field">
+    <%= form.label :public %>
+    <%= form.select(:public, options_for_select([["Private", false], ["Public", true]])) %>
     </div>
     <div class= "field-action">
     <%= form.submit "Add", class: "btn-action" %>
@@ -30,5 +33,4 @@
     </div>
   <% end %>
 </div>  
-</div>
 </div>

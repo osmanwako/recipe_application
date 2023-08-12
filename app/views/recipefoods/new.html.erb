@@ -2,9 +2,9 @@
 <div class="container">
 <%= render "layouts/header" %>
 <div class="row add-ingredient">
-<h3 class="recipefood-title">Add New Food</h3>
+<h3 class="recipefood-title">Add New Ingredient</h3>
 
-<%= form_with model: [@food] do |form| %>
+<%= form_with model: [@recipe, @recipefood] do |form| %>
     <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>

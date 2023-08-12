@@ -8,7 +8,7 @@
     <li><%= link_to "Foods List", foods_path %></li>
     <li><%= link_to "Recipes List", recipes_path %></li>
     <li><%= link_to "Public Recipes", "/public/recipes" %></li>
-    <li><%= link_to 'General Shopping list', general_shopping_list_path %></li>
+    <li><%= link_to "Shopping List", "/general/food/shopping" %></li>
     <li><%= form_tag "/users/logout", method: :delete do %>
     <%= submit_tag("Logout", class: "btn-link") %>
      <% end %>

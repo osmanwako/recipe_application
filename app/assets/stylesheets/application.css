@@ -40,6 +40,12 @@ header {
   width: 100%;
 }
 
+nav ul li a {
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+}
+
 .logo {
   flex-grow: 1;
   margin-left: 30px;
@@ -87,20 +93,6 @@ nav ul li form {
   margin: 0;
 }
 
-.btn-link:hover {
-  background-color: #3e49eb;
-}
-
-nav ul li a {
-  color: #fff;
-  padding: 10px;
-  text-decoration: none;
-}
-
-nav ul li a:hover {
-  background-color: #3e49eb;
-}
-
 .button-tab {
   margin-left: 10px;
   border: solid 1px #20538d;
@@ -117,6 +109,7 @@ nav ul li a:hover {
   padding: 12px 20px;
   border-radius: 5px;
   border: none;
+  display: inline-block;
 }
 
 div .btn-action {
@@ -166,7 +159,6 @@ div .btn-action {
 
 .field-link {
   display: flex;
-  margin-bottom: 0;
 }
 
 .field-link a {
@@ -178,4 +170,12 @@ div .btn-action {
   color: #fff;
   padding: 8px 12px;
   text-decoration: none;
+}
+
+.btn-link:hover {
+  background-color: #3e49eb;
+}
+
+nav ul li a:hover {
+  background-color: #3e49eb;
 }

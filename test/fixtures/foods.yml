@@ -4,8 +4,23 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+food_one:
+  name: Apple
+  measurement_unit: Kilogram
+  price: 1.5
+  quantity: 12
+  user: user_one
+
+food_two:
+  name: Beef
+  measurement_unit: Grams
+  price: 1120.5
+  quantity: 10
+  user: user_two
+
+food_three:
+  name: Chicken
+  measurement_unit: Kilogram
+  price: 1.5
+  quantity: 12
+  user: user_one
